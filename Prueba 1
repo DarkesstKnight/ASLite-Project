@@ -1,7 +1,10 @@
 #include <iostream>
 using namespace std;
 int main() {
-float cobre, foptica;
+float cobre, foptica, ;//Tipos de cables, ancho y altura del lugar, swith, baterry, back ups etc.
+cout<<"Escoge entre las siguientes opciones: ";
+cout<<"2. Cat 6A y Cat 7 para la Red";
+cout<<"3. TCHHN para energía eléctrica";
 
 return 0;
 }
