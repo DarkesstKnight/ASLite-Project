@@ -6,6 +6,6 @@ float cobre, foptica;//Tipos de cables, ancho y altura del lugar, swith, baterry
 cout<<"Escoge entre las siguientes opciones: \n";
 cout<<"1.Cables Cat 6A y Cat 7 para la Red\n";
 cout<<"2.Cables TCHHN para energía eléctrica\n";
-cout<<"3.Cables 18-2 y RS-485\n"; 
+cout<<"3.Cables 18-2 y RS-485 para cámaras y sensores\n"; 
 return 0;
 }
