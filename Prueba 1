@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	int opcion;
-	float cantidad, costocat, costoe;//Tipos de cables, pies de extensiC3n, ancho y altura del lugar, swith, baterry, back ups etc.
+	float cantidad, costocat, costoe;//Tipos de cables, pies de extension, ancho y altura del lugar, swith, baterry, back ups etc.
 	cout<<"Escoge entre las siguientes opciones: \n";
 	cout<<"1.Cables Cat 6A de 10ft para la Red\n";
 	cout<<"2.Cables TCHHN calibre 2 para electricidad\n";
@@ -28,7 +28,7 @@ int main() {
 		costoe=2.09;
 		// Se aplican los manipuladores 'fixed' y 'setprecision'"L.C.M."
 		// para asegurar que los precios se impriman con dos decimales de manera consistente."L.C.M."
-		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para un cable bC!sico TCHHN es de: \n"<<costoe+(costoe*0.115);
+		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para un cable basico TCHHN es de: \n"<<costoe+(costoe*0.115);
 		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para la cantidad de pies de cable TCHHN deseada: "<<cantidad*(costoe+(costoe*0.115));
 		break;
 	}
