@@ -1,28 +1,36 @@
 #include <iostream>
+#include <iomanip>// Se agrego esta libreria para manejar el formato de salida,"L.C.M."
+// en particular para controlar la cantidad de decimales en los precios."L.C.M."
 using namespace std;
+
 int main() {
-int opcion;
-float cantidad, costocat, costoe;//Tipos de cables, pies de extensión, ancho y altura del lugar, swith, baterry, back ups etc.
-cout<<"Escoge entre las siguientes opciones: \n";
-cout<<"1.Cables Cat 6A de 10ft para la Red\n";
-cout<<"2.Cables TCHHN calibre 2 para electricidad\n";
-cout<<"3.Cables 18-2 y RS-485 para cámaras y sensores\n"; 
-cin>>opcion;
-switch (opcion) {
-case 1:
-cout<<"Ingresa la cantidad de cables para red que quieres: ";
-cin>>cantidad;
-costocat=12.99;
-cout<<"El precio estimado con ivu incluido de un cable básico de 12.99 al incluirle ivu es de: \n"<<costocat+(costocat*0.115);
-cout<<"\nEl precio estimado con ivu incluido de todos los cables es: \n"<<cantidad*(costocat+ (costocat*0.115));//Hacer loop para que si es solo uno no se ejecute esta línea en el programa
-break;
-case 2:
-cout<<"Ingresa la cantidad de pies que deseas: ";
-cin>>cantidad;
-costoe=2.09;
-cout<<"El precio estimado con ivu incluido para un cable básico TCHHN es de: \n"<<costoe+(costoe*0.115);
-cout<<"El precio estimado con ivu incluido para la cantidad de pies de cable TCHHN deseada: "<<cantidad*(costoe+(costoe*0.115));
-break;
-}
-return 0;
+	int opcion;
+	float cantidad, costocat, costoe;//Tipos de cables, pies de extensiC3n, ancho y altura del lugar, swith, baterry, back ups etc.
+	cout<<"Escoge entre las siguientes opciones: \n";
+	cout<<"1.Cables Cat 6A de 10ft para la Red\n";
+	cout<<"2.Cables TCHHN calibre 2 para electricidad\n";
+	cout<<"3.Cables 18-2 y RS-485 para cC!maras y sensores\n";
+	cin>>opcion;
+	switch (opcion) {
+
+	case 1:
+		cout<<"Ingresa la cantidad de cables para red que quieres: ";
+		cin>>cantidad;
+		costocat=12.99;
+		// Se aplican los manipuladores 'fixed' y 'setprecision'"L.C.M."
+		// para asegurar que los precios se impriman con dos decimales de manera consistente."L.C.M."
+		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido de un cable bC!sico de 12.99 al incluirle ivu es de: \n"<<costocat+(costocat*0.115);
+		cout<<fixed<<setprecision(2)<<"\nEl precio estimado con ivu incluido de todos los cables es: \n"<<cantidad*(costocat+ (costocat*0.115));//Hacer loop para que si es solo uno no se ejecute esta lC-nea en el programa
+		break;
+	case 2:
+		cout<<"Ingresa la cantidad de pies que deseas: ";
+		cin>>cantidad;
+		costoe=2.09;
+		// Se aplican los manipuladores 'fixed' y 'setprecision'"L.C.M."
+		// para asegurar que los precios se impriman con dos decimales de manera consistente."L.C.M."
+		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para un cable bC!sico TCHHN es de: \n"<<costoe+(costoe*0.115);
+		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para la cantidad de pies de cable TCHHN deseada: "<<cantidad*(costoe+(costoe*0.115));
+		break;
+	}
+	return 0;
 }
