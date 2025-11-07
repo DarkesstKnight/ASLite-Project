@@ -7,7 +7,7 @@ int main() {
 	int opcion;
 	float cantidad, costocat, costoe;//Tipos de cables, pies de extension, ancho y altura del lugar, switch, baterry, back ups etc.
 	cout<<"Escoge entre las siguientes opciones: \n";
-	cout<<"1.Cables Cat 6A de 10ft para la Red\n";
+	cout<<"1.Cables Cat 6A de 1000ft para la Red\n";
 	cout<<"2.Cables TCHHN calibre 2 para electricidad\n";
 	cout<<"3.Cables 18-2 y RS-485 para camaras y sensores\n";
 	cin>>opcion;
@@ -16,10 +16,10 @@ int main() {
 	case 1:
 		cout<<"Ingresa la cantidad de cables para red que quieres: ";
 		cin>>cantidad;
-		costocat=12.99; //Conseguir precios en Puerto Rico
+		costocat=140.00; //Conseguir precios en Puerto Rico https://www.blueboxpr.com/cat6-1000-white?utm_source=chatgpt.com $140(Tienda en Arecibo) 1000ft de cable CAT6
 		// Se aplican los manipuladores 'fixed' y 'setprecision'"L.C.M."
 		// para asegurar que los precios se impriman con dos decimales de manera consistente."L.C.M."
-		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido de un cable basico de 12.99 al incluirle ivu es de: \n"<<costocat+(costocat*0.115);
+		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido de un cable basico de $140.00 al incluirle ivu es de: \n"<<costocat+(costocat*0.115);
 		cout<<fixed<<setprecision(2)<<"\nEl precio estimado con ivu incluido de todos los cables es: \n"<<cantidad*(costocat+ (costocat*0.115));//Hacer loop para que si es solo uno no se ejecute esta lC-nea en el programa
 		break;
 	case 2:
