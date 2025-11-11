@@ -1,36 +1,3 @@
 #include <iostream>
-#include <iomanip>// Se agrego esta libreria para manejar el formato de salida,"L.C.M."
-// en particular para controlar la cantidad de decimales en los precios."L.C.M."
 using namespace std;
-
 int main() {
-	int opcion;
-	float cantidad, costocat, costoe;//Tipos de cables, pies de extension, ancho y altura del lugar, switch, baterry, back ups etc.
-	cout<<"Escoge entre las siguientes opciones: \n";
-	cout<<"1.Cables Cat 6A de 1000ft para la Red\n";
-	cout<<"2.Cables TCHHN calibre 2 para electricidad\n";
-	cout<<"3.Cables 18-2 y RS-485 para camaras y sensores\n";
-	cin>>opcion;
-	switch (opcion) {
-
-	case 1:
-		cout<<"Ingresa la cantidad de cables para red que quieres: ";
-		cin>>cantidad;
-		costocat=140.00; //Conseguir precios en Puerto Rico https://www.blueboxpr.com/cat6-1000-white?utm_source=chatgpt.com $140(Tienda en Arecibo) 1000ft de cable CAT6
-		// Se aplican los manipuladores 'fixed' y 'setprecision'"L.C.M."
-		// para asegurar que los precios se impriman con dos decimales de manera consistente."L.C.M."
-		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido de un cable basico de $140.00 al incluirle ivu es de: \n"<<costocat+(costocat*0.115);
-		cout<<fixed<<setprecision(2)<<"\nEl precio estimado con ivu incluido de todos los cables es: \n"<<cantidad*(costocat+ (costocat*0.115));//Hacer loop para que si es solo uno no se ejecute esta lC-nea en el programa
-		break;
-	case 2:
-		cout<<"Ingresa la cantidad de pies que deseas: ";
-		cin>>cantidad;
-		costoe=2.09;
-		// Se aplican los manipuladores 'fixed' y 'setprecision'"L.C.M."
-		// para asegurar que los precios se impriman con dos decimales de manera consistente."L.C.M."
-		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para un cable basico TCHHN es de: \n"<<costoe+(costoe*0.115);
-		cout<<fixed<<setprecision(2)<<"El precio estimado con ivu incluido para la cantidad de pies de cable TCHHN deseada: "<<cantidad*(costoe+(costoe*0.115));
-		break;
-	}
-	return 0;
-}
