@@ -25,7 +25,7 @@ int main()
             cin.clear(); 
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Error: Solo se permiten números (1-4). Intenta nuevamente.\n\n";
-            continue; 
+            continue; //hace que NO se ejecute el switch y vuelva directo a mostrar el menú
         }
 
         if (menuOption >= 1 && menuOption <= 4) {
@@ -36,8 +36,6 @@ int main()
                 cout << "Entre cualquier palabra y se traducirá a lenguaje de señas: ";
                 cin>>palabra;
 
-
-	return 0;
                 break;
 
             case 2:
