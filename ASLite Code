@@ -24,8 +24,7 @@ int main()
 			case 1: // ASLite Translate
 
 				cout <<"\nEntre cualquier palabra: ";
-				getline(cin, wordTranslate);
-
+                cin>>wordTranslate//Al escribir el cin se permite entrar la palabra usando lo que conocemos, asi el profesor pregunta menos. 
 				break;
 
 			case 2: // ASLite Training
