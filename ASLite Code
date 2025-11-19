@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    // Declaracion de variables
+	int menuOption;
+	string wordTranslate;
+
+	cout << "Bienvenidos a ASLite 0.1...\n";
+	cout << "Escoga entre las siguientes opciones (1-4): ";
+	cout << "\n1) ASLite Translate.";           // Usuario entra cualquiera palabra, y el output es la palabra en lenguaje de señas.
+	cout << "\n2) ASLite Training.";           // Usuario entra cualquier letra o numero, y el output es la letra o numero en lenguaje de señas.
+	cout << "\n3) ASLite guess game.";        // El programa le enseñara un signo en ascci art y el usuario tiene que desifrar que letra o numero es.
+	cout << "\n4) Exit.\n";                  // Salida del programa.
+	cin >> menuOption;
+
+	do {                                                 // Do whila para que el programa se repita.
+
+		if (menuOption >=1 && menuOption <=4) {        // Condicion para que el usuario nada mas pueda entar del 1 al 4.
+
+			switch(menuOption) {                      
+
+			case 1: // ASLite Translate
+
+				cout <<"\nEntre cualquier palabra: ";
+				getline(cin, wordTranslate);
+
+				break;
+
+			case 2: // ASLite Training
+
+
+
+				break;
+
+			case 3: // ASLite guess game
+
+
+
+				break;
+
+			case 4: // Exit
+
+
+
+				break;
+
+			default:
+
+				cout<< "Error en el input, vuelva a intentarlo.";
+
+			}
+
+		} else {
+
+			cout << "Error en input, vuelva a intentarlo del (1-4).";
+
+		}
+
+
+
+	} while ()
+
+
+		return 0;
+}
