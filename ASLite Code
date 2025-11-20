@@ -29,7 +29,31 @@ int main()
 				break;
 
 			case 2: // ASLite Training
+            (Una sola letra o número)
+            string letra;
+            cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
+            if (!getline(cin, letra) || letra.empty()) {
+                cout << "Entrada vacía, regresando al menú.\n\n";
+                break;
+            }
 
+            // Tomamos solo el primer carácter
+            char c = letra[0];
+
+            // Validamos que sea letra o dígito
+            if (!isalpha(static_cast<unsigned char>(c)) &&
+                !isdigit(static_cast<unsigned char>(c))) {
+                cout << "Solo se permiten letras (A-Z) o dígitos (0-9).\n\n";
+                break;
+            }
+
+            // Creamos un string de longitud 1 para usar printWord
+            string single(1, c);
+
+            cout << "\n--- Letra en ASCII art ---\n\n";
+            printWord(single, alphabet, maxLines);
+            cout << "\n---------------------------\n\n";
+            break;}
 
 
 				break;
