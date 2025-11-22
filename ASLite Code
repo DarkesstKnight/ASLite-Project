@@ -1,7 +1,13 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <cctype>
 using namespace std;
+const string asciiData= R"(//Favor de poner el archivo ascii art aqui
+const int maxLines = 40;                    
+string alphabet[36][maxLines];              // 26 letras + 10 dígitos
+
+void printWord(const string& word, string alphabet[][maxLines], int maxLines) {
 int main()
 {
     // Declaracion de variables
@@ -17,8 +23,9 @@ int main()
 	cout << "\n3) ASLite guess game.";        // El programa le enseñara un signo en ascci art y el usuario tiene que desifrar que letra o numero es.
 	cout << "\n4) Exit.\n";                  // Salida del programa.
 	cin >> menuOption;
-		if (menuOption >=1 && menuOption <=4) {        // Condicion para que el usuario nada mas pueda entar del 1 al 4.
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');//Sino el programa salta la opcion de escribir las palabras en los case 1 y 2
 
+		if (menuOption >=1 && menuOption <=4) {        // Condicion para que el usuario nada mas pueda entar del 1 al 4.
 			switch(menuOption) {                      
 
 			case 1: // ASLite Translate
@@ -28,14 +35,14 @@ int main()
 
 				break;
 
-			case 2: // ASLite Training
-            (Una sola letra o número)
+			case 2: { // ASL Lite Training con una sola letra o numero
             string letra;
             cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
             if (!getline(cin, letra) || letra.empty()) {
                 cout << "Entrada vacía, regresando al menú.\n\n";
                 break;
             }
+
 
             // Tomamos solo el primer carácter
             char c = letra[0];
@@ -54,10 +61,6 @@ int main()
             printWord(single, alphabet, maxLines);
             cout << "\n---------------------------\n\n";
             break;}
-
-
-				break;
-
 			case 3: // ASLite guess game
 
 
