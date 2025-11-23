@@ -3,9 +3,9 @@ En este proyecto se tiene como objetivo principal facilitar la comunicacion a tr
 Utilizando C++, librerias como #include <limits> y otras asistirán en la construcción de un archivo de lenguaje de señas que contenga todas las letras del abecedario y los numeros. 
 Un menu permitira a los usuarios elegir entre las siguientes 4 opciones: 
 1) ASLITE Translate que permitira al usuario escribir una palabra y cual, despues de tocar la tecla de enter se mostrará la palabra en lenguage de señas,
-2) 2)AS LITE Training cual servirá para que el usuario escriba una sola letra para el usuario a la vez de manera que si le interesa aprender de manera gradual el lenguaje de señas entonces lo pueda hacer una letra a la vez,
-3)
-4) 3)... y 4) Esta opción permite que el usuario salga del programa. 
+2) AS LITE Training cual servirá para que el usuario escriba una sola letra para el usuario a la vez de manera que si le interesa aprender de manera gradual el lenguaje de señas entonces lo pueda hacer una letra a la vez,
+3) 3)... y
+4) Exit.\n. Esta opción permite que el usuario salga del programa. 
 Un archivo digital conocido como ASCII Art será utilizado como recurso para cada una de las letras de lenguaje de se♫as y los dígitos del 0-9 permitiendo crear muchas palabras o números.
 Las letras tendrán un tamaño de alrededor de 40 líneas. 
 
