@@ -7,7 +7,7 @@ using namespace std;
 // 
 // 
 // Load ASCII art from file into alphabet array
-void loadAlphabetFromFile(string alphabet[26][40], const string& filename) {
+void loadAlphabetFromFile(string alphabet[36][40], const string& filename) {
 	ifstream file(filename);
 	if (!file) {
 		cerr << "Error: Could not open " << filename << endl;
