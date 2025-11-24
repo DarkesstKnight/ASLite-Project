@@ -32,7 +32,7 @@ int main()
 
 				break;
 
-			case 2: { // ASL Lite Training con una sola letra o numero
+			case 2: { // ASL Lite Training con una sola letra o numero, esta es la parte de Bryan y con mucho gusto me dejan saber si necesitan ayuda. Ya como veo dos partes distintas esperare por ustedes. 
             string letra;
             cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
             if (!getline(cin, letra) || letra.empty()) {
