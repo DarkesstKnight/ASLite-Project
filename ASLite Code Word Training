@@ -20,7 +20,7 @@ int main()
 	cout << "\n3) ASLite guess game.";        // El programa le enseñara un signo en ascci art y el usuario tiene que desifrar que letra o numero es.
 	cout << "\n4) Exit.\n";                  // Salida del programa.
 	cin >> menuOption;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');//Sino el programa salta la opcion de escribir las palabras en los case 1 y 2
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');//Sino el programa salta la opcion de escribir las palabras en los case 1 y 2//Revisar
 
 		if (menuOption >=1 && menuOption <=4) {        // Condicion para que el usuario nada mas pueda entar del 1 al 4.
 			switch(menuOption) {                      
