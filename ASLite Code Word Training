@@ -3,9 +3,6 @@
 #include <limits>
 #include <cctype>
 using namespace std;
-const string asciiData= R"(//Favor de poner el archivo ascii art aqui
-const int maxLines = 40;                    
-string alphabet[36][maxLines];              // 26 letras + 10 dígitos
 
 void printWord(const string& word, string alphabet[][maxLines], int maxLines) {
 int main()
