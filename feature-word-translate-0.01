@@ -1,0 +1,213 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cctype>
+#include <ctime>
+using namespace std;
+//functions
+//
+//
+// Load ASCII art from file into alphabet array
+void loadAlphabetFromFile(string alphabet[36][40], const string& filename) {
+	ifstream file(filename); // abrir el archivo
+
+	if (!file) {
+		cout << "Error: no se pudo abrir el archivo " << filename << endl;
+		return;
+	}
+
+	string line;
+	int index = -1;   // posicion de la letra en el arreglo
+	int lineNum = 0;  // numero de linea dentro de la letra
+
+	while (getline(file, line)) {
+		// si la linea empieza con #, significa que es una nueva letra
+		if (line[0] == '#') {
+			char letter = line[1];      // tomamos el segundo caracter (#A, #B, etc.)
+			index = letter - 'A';       // calculamos posicion (A=0, B=1, etc.)
+			lineNum = 0;                // reiniciamos el contador de lineas
+		}
+		else {
+			// guardamos la linea en el arreglo
+			alphabet[index][lineNum] = line;
+			lineNum++;
+		}
+	}
+
+	file.close(); // cerramos el archivo
+}
+
+// Print the word in ASCII art
+void printWord(const string& word, string alphabet[36][40], int maxLines) {
+	// calcular cuantas lineas maximas tienen las letras de la palabra
+	int maxUsadas = 0;
+	for (int i = 0; i < word.size(); i++) {
+		char c = toupper(word[i]);
+		int index = c - 'A';
+
+		// contar cuantas lineas tiene esta letra
+		int lineCount = 0;
+		for (int l = 0; l < maxLines; l++) {
+			if (alphabet[index][l] != "") {
+				lineCount++;
+			}
+		}
+
+		if (lineCount > maxUsadas) {
+			maxUsadas = lineCount;
+		}
+	}
+
+	// imprimir solo hasta maxUsadas
+	for (int line = 0; line < maxUsadas; line++) {
+		for (int i = 0; i < word.size(); i++) {
+			char c = toupper(word[i]);
+			int index = c - 'A';
+
+			if (alphabet[index][line] != "") {
+				cout << alphabet[index][line] << "  ";
+			} else {
+				cout << "                          "; // relleno
+			}
+		}
+		cout << endl;
+	}
+}
+
+
+int main()
+{
+	int maxLines = 40;
+	int menuOption;
+	string alphabet[36][40]; // Storage for ASCII art
+	string wordTranslate;
+	string menuInput;
+
+	do {
+		cout << "Bienvenidos a ASLite 0.1...\n";
+		cout << "Escoga entre las siguientes opciones (1-4): ";
+		cout << "\n1) ASLite Translate.";           // Usuario entra cualquiera palabra, y el output es la palabra en lenguaje de senas.
+		cout << "\n2) ASLite Training.";           // Usuario entra cualquier letra o numero, y el output es la letra o numero en lenguaje de senas.
+		cout << "\n3) ASLite guess game.";        // El programa le ensenara un signo en ascci art y el usuario tiene que desifrar que letra o numero es.
+		cout << "\n4) Exit.\n";                  // Salida del programa.
+
+		getline(cin, menuInput);
+		menuOption = stoi(menuInput);
+// Do while para que el programa se repita.
+
+		if (menuOption >= 1 && menuOption <= 4) {        // Condicion para que el usuario nada mas pueda entar del 1 al 4.
+
+			switch (menuOption) {
+
+			case 1: { // ASLite Translate
+				loadAlphabetFromFile(alphabet, "asl_ascii_alphabet.txt");
+
+				cout << "\nModo Translate (ASL).\n";
+				cout << "Escriba cualquier palabra para verla en lenguaje de senas.\n";
+				cout << "Escriba 0 para salir de este modo.\n";
+
+				string wordTranslate;
+
+				while (true) {
+					cout << "\nEntre cualquier palabra: ";
+					getline(cin, wordTranslate);
+
+					if (wordTranslate == "0") {
+						cout << "Saliendo del modo Translate...\n";
+						break; // salir del loop y regresar al menu principal
+					}
+
+					printWord(wordTranslate, alphabet, maxLines);
+				}
+
+				break;
+			}
+
+			case 2: { // ASLite Training
+				loadAlphabetFromFile(alphabet, "asl_ascii_alphabet.txt");
+
+				cout << "\nEntrenamiento de ASL.\n";
+				cout << "Escriba una letra (A-Z). Escriba 0 para salir.\n";
+
+				string trainingInput;
+
+				while (true) {
+					cout << "\nIngrese una letra: ";
+					getline(cin, trainingInput);
+
+					if (trainingInput == "0") {
+						cout << "Saliendo del entrenamiento...\n";
+						break;
+					}
+
+					char c = trainingInput[0]; // tomamos la primera letra
+					c = toupper(c);            // la convertimos a mayuscula
+
+					string singleLetter = "";  // version sencilla
+					singleLetter += c;         // anadimos la letra
+
+					printWord(singleLetter, alphabet, maxLines);
+				}
+				break;
+			}
+
+			case 3: { // ASLite guess game
+				loadAlphabetFromFile(alphabet, "asl_ascii_alphabet.txt");
+
+				cout << "\nBienvenido al juego de adivinanza ASL!\n";
+				cout << "El programa mostrara un signo en ASCII art.\n";
+				cout << "Tu tarea es adivinar que letra es.\n";
+				cout << "Escribe 0 para salir.\n";
+
+				string userGuess;
+				char randomLetter;
+				// Semilla para numeros aleatorios
+				srand(time(0));
+
+				while (true) {
+					// Escoger una letra aleatoria entre A-Z
+					randomLetter = 'A' + rand() % 26;
+
+					string singleLetter = "";
+					singleLetter += randomLetter;
+
+					// Mostrar el signo en ASCII art
+					printWord(singleLetter, alphabet, maxLines);
+
+					// Pedir respuesta al usuario
+					cout << "\n\nCual es la letra? ";
+					getline(cin, userGuess);
+
+					if (userGuess == "0") {
+						cout << "Saliendo del juego...\n";
+						break;
+					}
+
+					// Convertir la respuesta a mayuscula y comparar
+					char guessChar = toupper(userGuess[0]);
+
+					if (guessChar == randomLetter) {
+						cout << "!Correcto!\n";
+					} else {
+						cout << "Incorrecto. La letra era: " << randomLetter << "\n";
+					}
+				}
+
+				break;
+			}
+
+			}
+		}
+
+		else
+
+		{
+
+			cout << "Error en input, vuelva a intentarlo del (1-4).";
+
+		}
+
+	} while (menuOption != 4);
+
+	return 0;
+}
