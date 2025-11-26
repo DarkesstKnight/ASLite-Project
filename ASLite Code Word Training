@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <limits>
-#include <cctype>
+#include <cctype>//Lyran pondrá el archivo de ascilite que contienen las letras en lenguaje de señas
 using namespace std;
 
 void printWord(const string& word, string alphabet[][maxLines], int maxLines) {
@@ -12,7 +13,7 @@ int main()
 	string wordTranslate;
 
 
-	do {                                                 // Do whila para que el programa se repita.
+	do {                                                 // Do while para que el programa se repita.
         cout << "Bienvenidos a ASLite 0.1...\n";
 	cout << "Escoga entre las siguientes opciones (1-4): ";
 	cout << "\n1) ASLite Translate.";           // Usuario entra cualquiera palabra, y el output es la palabra en lenguaje de señas.
@@ -22,7 +23,7 @@ int main()
 	cin >> menuOption;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');//Sino el programa salta la opcion de escribir las palabras en los case 1 y 2//Revisar
 
-		if (menuOption >=1 && menuOption <=4) {        // Condicion para que el usuario nada mas pueda entar del 1 al 4.
+		if (menuOption >=1 && menuOption <=4) {        // Condicion para que el usuario nada mas pueda entrar del 1 al 4.
 			switch(menuOption) {                      
 
 			case 1: // ASLite Translate
@@ -32,7 +33,7 @@ int main()
 
 				break;
 
-			case 2: { // ASL Lite Training con una sola letra o numero, esta es la parte de Bryan y con mucho gusto me dejan saber si necesitan ayuda. Ya como veo dos partes con distintas variables esperare por ustedes. 
+			case 2: { // ASL Lite Training con una sola letra o numero, esta es la parte mia y con mucho gusto me dejan saber si necesitan ayuda. Ya como veo dos partes con distintas variables esperare por ustedes. 
             string letra;
             cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
             if (!getline(cin, letra) || letra.empty()) {
