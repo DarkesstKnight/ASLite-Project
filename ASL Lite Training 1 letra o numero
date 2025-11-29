@@ -1,4 +1,4 @@
-case 2: {
+case 2: {//Parte escrita por Bryan Nieves
     string letra;
     cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
     if (!getline(cin, letra) || letra.empty()) {
