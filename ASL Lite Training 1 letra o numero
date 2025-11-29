@@ -5,13 +5,12 @@ case 2: {//Parte escrita por Bryan Nieves
         cout << "Entrada vacía, regresando al menú.\n";
         break;
     }
-            // Tomamos solo el primer carácter
-            char c = letra[0];
+            char c = letra[0];//Toma solo el primer carácter del string letra.
 
             // Validamos que sea letra o dígito
-          if (!((c >= 'A' && c <= 'Z') ||//Excluye aquellos caracteres que no sean letras o números en mayúscula o minúscula o dígitos del 0 al 9. 
-          (c >= 'a' && c <= 'z') ||
-          (c >= '0' && c <= '9'))) {
+          if (!((c >= 'A' && c <= 'Z') ||//Excluye aquellos caracteres que no sean letras en mayúscula;
+          (c >= 'a' && c <= 'z') ||//o en minúscula;
+          (c >= '0' && c <= '9'))) {//o dígitos del 0 al 9.
     cout << "Solo se permiten letras (A-Z) o dígitos (0-9).\n\n";
     break;
 }
