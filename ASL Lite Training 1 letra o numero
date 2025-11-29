@@ -1,21 +1,21 @@
-case 2: { // ASL Lite Training con una sola letra o numero, esta es la parte mia y con mucho gusto me dejan saber si necesitan ayuda. Ya como veo dos partes con distintas variables esperare por ustedes. 
-            string letra;
-            cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
-            if (!getline(cin, letra) || letra.empty()) {
-                cout << "Entrada vacía, regresando al menú.\n\n";
-                break;
-            }
-
-
+case 2: {
+    string letra;
+    cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
+    if (!getline(cin, letra) || letra.empty()) {
+        cout << "Entrada vacía, regresando al menú.\n\n";
+        break;
+    }
             // Tomamos solo el primer carácter
             char c = letra[0];
 
             // Validamos que sea letra o dígito
-            if (!isalpha(static_cast<unsigned char>(c)) &&//La funcion (!isalpha) permite que si el usuario ingresa algo que no sea una palabra, y junto con !isdigit si tampoco es un numero, entonces se ejecute  son ciertan es true y se ejecuta el mensaje debajo del if
-                !isdigit(static_cast<unsigned char>(c))) {//y junto con !isdigit si tampoco es un número, entonces ambas se vuelven ciertas y se ejecuta el mensaje debajo del if.
-                cout << "Solo se permiten letras (A-Z) o dígitos (0-9).\n\n";
-                break;
-            }
+          if (!((c >= 'A' && c <= 'Z') ||//Excluye aquellos caracteres que no sean letras o números en mayúscula o minúscula o dígitos del 0 al 9. 
+          (c >= 'a' && c <= 'z') ||
+          (c >= '0' && c <= '9'))) {
+    cout << "Solo se permiten letras (A-Z) o dígitos (0-9).\n\n";
+    break;
+}
+
 
             // Creamos un string de longitud 1 para usar printWord
             string single(1, c);
