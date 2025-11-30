@@ -1,0 +1,187 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cctype>
+#include <ctime>
+using namespace std;
+
+/*
+  Load ASCII art from file into the alphabet array.
+  Each letter in the file starts with a line beginning with '#' followed by the letter.
+  The following lines are the ASCII art representation of that letter.
+ */
+ //15%
+void loadAlphabetFromFile(string alphabet[36][40], const string& filename) {
+	ifstream file(filename); // open the file
+
+	if (!file) {
+		cout << "Error: could not open file " << filename << endl;
+		return;
+	}
+
+	string line;
+	int index = -1;   // position of the letter in the array
+	int lineNum = 0;  // line number inside the letter block
+
+	while (getline(file, line)) {
+		// if line starts with '#', it means a new letter begins
+		if (line[0] == '#') {
+			char letter = toupper(line[1]); // force uppercase for consistency
+			index = letter - 'A';           // calculate position (A=0, B=1, etc.)
+			lineNum = 0;                    // reset line counter for this letter
+		} else {
+			// store the line in the array
+			alphabet[index][lineNum] = line;
+			lineNum++;
+		}
+	}
+
+	file.close(); // close the file
+}
+
+/*
+  Print letters one after another.
+  Each letter is printed with its ASCII art block, stacked one after the other.
+  The parameter showHeader controls whether to display the "--- Letter X ---" header.
+ */
+void printWord (const string& word, string alphabet[36][40], int maxLines, bool showHeader) {
+	for (int i = 0; i < word.size(); i++) {
+		char c = toupper(word[i]);   // convert to uppercase
+		int index = c - 'A';         // calculate index in alphabet array
+
+		if (showHeader) {
+			cout << "\n--- Letter " << c << " ---\n"; // header for clarity
+		}
+
+		for (int line = 0; line < maxLines; line++) {
+			if (alphabet[index][line] != "") {
+				cout << alphabet[index][line] << endl; // print ASCII art line
+			}
+		}
+	}
+}
+
+int main() {
+	int maxLines = 40;                  // maximum number of lines per letter
+	int menuOption;                     // menu option chosen by the user
+	string alphabet[36][40];            // storage for ASCII art letters
+	string menuInput;                   // raw input from user (string form)
+    //Kevin
+	do {
+		// Display main menu
+		cout << "Welcome to ASLite 0.1...\n";
+		cout << "Choose one of the following options (1-4): ";
+		cout << "\n1) ASLite Translate.";   // User enters a word, output is the word in sign language ASCII art
+		cout << "\n2) ASLite Training.";               // User enters a single letter/number, output is its ASCII art
+		cout << "\n3) ASLite Guess Game.";             // Program shows ASCII art, user guesses the letter
+		cout << "\n4) Exit.\n";                        // Exit program
+
+		getline(cin, menuInput);            // read input as string
+		menuOption = stoi(menuInput);       // convert string to integer
+
+		if (menuOption >= 1 && menuOption <= 4) {
+			switch (menuOption) {
+
+			case 1: { // Translate
+				loadAlphabetFromFile(alphabet, "asl_ascii_alphabet.txt");
+
+				cout << "\nTranslate Mode.\n";
+				cout << "Type any word to see it in sign language ASCII art.\n";
+				cout << "Type 0 to exit this mode.\n";
+
+				string wordTranslate;
+				while (true) {
+					cout << "\nEnter any word: ";
+					getline(cin, wordTranslate);
+
+					if (wordTranslate == "0") {
+						cout << "Exiting Translate mode...\n";
+						break; // exit loop and return to main menu
+					}
+
+					// showHeader = true here
+					printWord (wordTranslate, alphabet, maxLines, true);
+				}
+				break;
+			}
+            //Bryan
+			case 2: { // Training mode
+				loadAlphabetFromFile(alphabet, "asl_ascii_alphabet.txt");
+
+				string letter;
+				cout << "\nEnter a single letter or number (A-Z, 0-9): ";
+				if (!getline(cin, letter)) {
+					cout << "Error, returning to menu.\n";
+					break;
+				}
+
+				char c = letter[0]; // take only the first character
+
+				// Validate input (must be a letter or digit)
+				if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))) {
+					cout << "Only letters (A-Z) or digits (0-9) are allowed.\n\n";
+					break;
+				}
+
+				// Create a string of length 1 to use with printWord
+				string single(1, c);
+
+				cout << "\n--- Letter in ASCII art ---\n\n";
+				// showHeader = true here
+				printWord (single, alphabet, maxLines, true);
+				cout << "\n---------------------------\n\n";
+				break;
+			}
+            //L.C.M.
+			case 3: { // Guess game mode
+				loadAlphabetFromFile(alphabet, "asl_ascii_alphabet.txt");
+
+				cout << "\nWelcome to the ASL Guess Game!\n";
+				cout << "The program will show a letter in ASCII art.\n";
+				cout << "Your task is to guess which letter it is.\n";
+				cout << "Type 0 to exit.\n";
+
+				string userGuess;
+				char randomLetter;
+				srand(time(0)); // seed random number generator
+
+				while (true) {
+					// Pick a random letter between A-Z
+					randomLetter = 'A' + rand() % 26;
+
+					string singleLetter(1, randomLetter);
+
+					// Show the ASCII art for the random letter
+					// showHeader = false here (so it doesn't reveal the answer)
+					printWord (singleLetter, alphabet, maxLines, false);
+
+					// Ask user to guess
+					cout << "\n\nWhat is the letter? ";
+					getline(cin, userGuess);
+
+					if (userGuess == "0") {
+						cout << "Exiting Guess Game...\n";
+						break;
+					}
+
+					// Convert guess to uppercase and compare
+					char guessChar = toupper(userGuess[0]);
+
+					if (guessChar == randomLetter) {
+						cout << "Correct!\n";
+					} else {
+						cout << "Incorrect. The letter was: " << randomLetter << "\n";
+					}
+				}
+				break;
+			}
+
+			} // end switch
+		} else {
+			cout << "Invalid input, please try again (1-4).\n";
+		}
+
+	} while (menuOption != 4); // repeat until user chooses Exit
+
+	return 0;
+}
