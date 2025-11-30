@@ -1,8 +1,8 @@
 case 2: {//Parte escrita por Bryan Nieves
     string letra;//Permite la entrada de caracteres de texto
     cout << "\nEntre una sola letra o número (A-Z, 0-9): ";
-    if (!getline(cin, letra) || letra.empty()) {//Lee si el usuario entro un caracter ,y si no se ingresa nada, entonces se regresa al menú principal. 
-        cout << "Entrada vacía, regresando al menú.\n";
+    if (!getline(cin, letra)) {//Lee si el usuario entro un caracter ,y si no se ingresa nada, entonces se regresa al menú principal. 
+        cout << "Error, regresando al menú.\n";
         break;
     }
             char c = letra[0];//Toma solo el primer carácter del string letra.
