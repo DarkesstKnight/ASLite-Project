@@ -34,13 +34,13 @@ int main()
 				break;
 
 			case 2: {//Parte escrita por Bryan Nieves
-            string letra;//Permite la entrada de caracteres de texto; favor de revisar si falta cin
+            string letra;//Permite la entrada de caracteres de texto;
             cout<<"Favor de entrar solo una letra o numero";
             cin>>letra;
     
             char c = letra[0];//Toma solo el primer carácter del string letra.
 
-            // Validamos que sea letra o dígito
+            // Validamos que sea letra o dígito; favor de revisar
           if (!((c >= 'A' && c <= 'Z') ||//Excluye aquellos caracteres que no sean letras en mayúscula;
           (c >= 'a' && c <= 'z') ||//o en minúscula;
           (c >= '0' && c <= '9'))) {//o dígitos del 0 al 9.
