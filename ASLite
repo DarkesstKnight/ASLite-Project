@@ -10,7 +10,13 @@ using namespace std;
   Each letter in the file starts with a line beginning with '#' followed by the letter.
   The following lines are the ASCII art representation of that letter.
  */
- //15%
+ /***************************/
+
+// Microsoft (2025) Step-by-step explanation of reading .txt files in C++ [Generative AI chat]. Retrieved from: https://copilot.microsoft.com/share/explicacion-txt-cpp
+
+.
+
+/***************************/
 void loadAlphabetFromFile(string alphabet[36][40], const string& filename) {
 	ifstream file(filename); // open the file
 
