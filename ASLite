@@ -14,7 +14,6 @@ using namespace std;
 
 // Microsoft (2025) Step-by-step explanation of reading .txt files in C++ [Generative AI chat]. Retrieved from: https://copilot.microsoft.com/share/explicacion-txt-cpp
 
-.
 
 /***************************/
 void loadAlphabetFromFile(string alphabet[36][40], const string& filename) {
